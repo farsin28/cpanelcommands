@@ -1,0 +1,48 @@
+ top c
+---------
+The real-time CPU usage can be viewed by running the “top” command. On the line that says “Cpu(s),” check the “%id” section to see the percentage at which your CPUs are idle; the higher the number, the better. A 99% idle CPU is doing almost nothing, whereas a 1% idle CPU is heavily tasked at that moment.
+ run “top c” and hit “M” to see which processes are consuming the most memory.
+
+$nproc
+-------------
+From the above output, you can see the server's no of cores. As such, a load average of 2 would indicate the server's cores are working at their full capacity. If the load average is less than the number of CPU cores on the server, the load average should generally not be a cause for concern.
+
+$sar 
+-------
+
+Historical resource usage can be viewed using the “sar” utility, which should exist by default on all cPanel servers from the sysstat package. Statistics are collected when sysstat runs via cron (/etc/cron.d/sysstat). If crond is not running, sysstat will not be able to collect this historical data.You do not need to specify the date when viewing the statistics for the current day. As such, this command would show the load average for today (sar -q) , p for cpu, d for disk io
+
+$free -m
+---------
+To view how much memory the server currently has unutilized, or free, use the “free”
+
+
+$ iostat -x 1 10
+--------------
+The final resource to investigate when determining high server load errors is the overall read and write activity of the hard drive itself. The following command will display the disk usage statistics ten times each second
+
+
+to check top 10 process using more memory
+ ps -axo "pid,size,command" --sort=-size | head -10
+ 
+ 
+ 
+ Ref: 
+ 
+ 
+ server load wa
+https://frameboxxindore.com/linux/how-do-i-know-if-my-iowait-is-high-linux.html
+https://support.cpanel.net/hc/en-us/articles/360050198954-How-to-diagnose-high-I-O-and-high-load-with-iotop?_ga=2.83126422.1840967131.1656309782-1019639866.1646482076
+
+mysql load
+https://www.sqlshack.com/helpful-linux-commands-for-sql-server-dbas-top/
+
+https://www.youtube.com/watch?v=rwVLa9me7e4
+performance troubleshooting
+
+https://tanelpoder.com/posts/high-system-load-low-cpu-utilization-on-linux/
+
+https://forums.cpanel.net/resources/troubleshooting-high-server-loads-on-linux-servers.379/
+https://www.chileoffshore.com/en/interesting-articles/126-linux-wait-io-problem
+
+
