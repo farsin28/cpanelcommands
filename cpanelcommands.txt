@@ -1,0 +1,32 @@
+#use full cPanel commands for Mail related issues
+1. REMOVE MAILS BY ID - /usr/sbin/exim -v -Mrm (MAIL ID HERE)
+
+2. LIST QUEUED MAILS - /usr/sbin/exim -bp
+
+3. LIST QUEUED MAILS COUNT - /usr/sbin/exim -bpc
+
+4. REMOVE ALL MAILS - exiqgrep -i|xargs exim -Mrm
+
+5. DELETE FROZEN MAILS - /usr/sbin/exim -bpr | grep '*** frozen ***' | awk '{print $3}' | xargs exim -Mrm
+
+6. REMOVE <> MAILS FROM THE QUEUE - exim -bp | grep "<>"| awk '{system ("exim -Mrm "$3)}'
+
+7. DELIVER FORCEFULLY EMAILS - /usr/sbin/exim -qff -v -C /etc/exim.conf &
+
+8. FREEZE MAILS FROM SENDER - /usr/sbin/exiqgrep -i -f (MAIL ADDRESS HERE) | xargs exim -Mf
+
+9. REMOVE MAILS FROM SENDER - /usr/sbin/exiqgrep -i -f abc@example.com | xargs exim -Mrm
+
+10. FORCE DELIVERY OF ONE MESSAGE - exim -M email-id
+
+11. FORCE ANOTHER QUEUE RUN - exim -qf
+
+12. FORCE ANOTHER QUEUE RUN AND ATTEMPT TO FLUSH THE FROZEN MESSAGE - exim -qff
+
+13. VIEW THE MESSAGE LOGS - exim -Mvl messageID
+
+14. VIEW BODY OF THE MESSAGE - exim -Mvb messageID
+
+15. VIEW HEADER OF THE MESSAGE - exim -Mvh messageID
+
+16. NUMBER OF MAILS IN THE QUEUE - exim -bpr | grep "<" | wc -l
