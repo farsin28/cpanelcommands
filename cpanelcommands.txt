@@ -1,4 +1,6 @@
 #use full cPanel commands for Mail related issues
+-----------------------------------------------------
+
 1. REMOVE MAILS BY ID - /usr/sbin/exim -v -Mrm (MAIL ID HERE)
 
 2. LIST QUEUED MAILS - /usr/sbin/exim -bp
