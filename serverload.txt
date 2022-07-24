@@ -1,3 +1,5 @@
+commands to trouble shoot CPU load issues
+
  top c
 ---------
 The real-time CPU usage can be viewed by running the “top” command. On the line that says “Cpu(s),” check the “%id” section to see the percentage at which your CPUs are idle; the higher the number, the better. A 99% idle CPU is doing almost nothing, whereas a 1% idle CPU is heavily tasked at that moment.
